@@ -22,13 +22,13 @@ Passing in a JSON string such as `{"test":1, "test2":[{"test3":3}]}` will return
 Either run in a PHP 7.4 environment or use the provided docker files.
 #### PHP
 ```
-git clone https://github.com/bosslabs/appsettings-flatten .
-cd app
+git clone https://github.com/bosslabs/appsettings-flatten
+cd appsettings-flatten
 composer install
 ```
 #### Docker
 ```
-docker pull https://github.com/bosslabs/appsettings-flatten
+docker pull docker.pkg.github.com/bosslabs/appsettings-flatten/appsettings-flatten:latest
 ```
 
 ## Usage
@@ -44,7 +44,7 @@ docker run docker.pkg.github.com/bosslabs/appsettings-flatten/appsettings-flatte
 ### Development
 ```
 #First clone the repo
-git clone <repo>
+git clone https://github.com/bosslabs/appsettings-flatten
 
 #Build the docker environment
 docker build -f Dockerfile-development -t appsettings-flatten .
