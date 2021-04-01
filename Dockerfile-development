@@ -1,0 +1,26 @@
+FROM php:7.4-cli as base
+LABEL maintainer="Martin Brooksbank <martin@bosslabs.co.uk>"
+
+# Install necessary OS packages
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y \
+        git \
+        libzip-dev \
+        zlib1g-dev \
+        libxml2-dev
+
+# Install necessary PHP packages
+RUN docker-php-ext-install \
+        zip \
+        xml
+
+WORKDIR /app
+
+# Install Composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
+
+ADD ./docker/docker-entrypoint-dev.sh /
+RUN chmod +x /docker-entrypoint-dev.sh
+
+EXPOSE 80
+CMD ["/docker-entrypoint-dev.sh"]
